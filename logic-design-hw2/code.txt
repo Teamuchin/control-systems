@@ -1,0 +1,17 @@
+#include <LiquidCrystal.h>
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+void setup() {
+	lcd.begin(16, 2);
+}
+
+void loop() {
+  	int adcVal = analogRead(A0);
+	float voltage = adcVal * (5.0 / 1023.0);
+    float tempC = (voltage - 0.5) * 100;
+  	String temptext = "Temperature:";
+  	lcd.print(temptext);
+	lcd.setCursor(0,1);
+  	lcd.print(tempC);
+	delay(250);
+  	lcd.clear();
+}
